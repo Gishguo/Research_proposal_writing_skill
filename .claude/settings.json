@@ -1,0 +1,7 @@
+{
+  "skills": {
+    "write-proposal": {
+      "path": ".claude/skills/write-proposal.md"
+    }
+  }
+}
