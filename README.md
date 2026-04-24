@@ -39,6 +39,76 @@ This is a [Claude Code](https://claude.ai/code) custom skill. To use it:
 2. Open the project in Claude Code.
 3. Run `/write-proposal` to start the skill.
 
+## Platform-Specific Configuration
+
+### Windows
+
+1. **Install Node.js (v18+)** — Download from [nodejs.org](https://nodejs.org/) or use winget:
+   ```powershell
+   winget install OpenJS.NodeJS.LTS
+   ```
+   After installation, restart your terminal and verify:
+   ```powershell
+   node --version
+   npm --version
+   ```
+
+2. **Install Claude Code** — Open a terminal (PowerShell or CMD) and run:
+   ```powershell
+   npm install -g @anthropic-ai/claude-code
+   claude --version
+   ```
+
+3. **Clone and run**:
+   ```powershell
+   git clone <this-repo-url> my-proposal
+   cd my-proposal
+   claude
+   ```
+   Then type `/write-proposal` in the Claude Code prompt.
+
+4. **Export proposal review as .docx** — The `generate_review_docx.js` script uses a hardcoded Windows path. Edit the output path in the script if needed, then run:
+   ```powershell
+   npm install
+   node generate_review_docx.js
+   ```
+
+### macOS
+
+1. **Install Node.js (v18+)** — Recommended via [Homebrew](https://brew.sh/):
+   ```bash
+   brew install node
+   ```
+   Or download the macOS installer from [nodejs.org](https://nodejs.org/). Verify:
+   ```bash
+   node --version
+   npm --version
+   ```
+
+2. **Install Claude Code**:
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   claude --version
+   ```
+
+3. **Clone and run**:
+   ```bash
+   git clone <this-repo-url> my-proposal
+   cd my-proposal
+   claude
+   ```
+   Then type `/write-proposal` in the Claude Code prompt.
+
+4. **Export proposal review as .docx** — The `generate_review_docx.js` script has a hardcoded Windows path (`D:\\claude skill to write proposal\\...`). Before running on macOS, update the output path in the last line of the script to a macOS-compatible path, e.g.:
+   ```js
+   fs.writeFileSync("./Review of PhD Research Proposal.docx", buffer);
+   ```
+   Then run:
+   ```bash
+   npm install
+   node generate_review_docx.js
+   ```
+
 ## File structure
 
 ```
@@ -232,6 +302,78 @@ claude
 ```
 
 接下来就会启动交互式的引导流程，一步步帮你调试研究设计并生成 proposal。
+
+---
+
+## 💻 平台专属配置
+
+### Windows
+
+1. **安装 Node.js (v18+)** — 从 [nodejs.org](https://nodejs.org/) 下载安装包，或使用 winget：
+   ```powershell
+   winget install OpenJS.NodeJS.LTS
+   ```
+   安装后重启终端，验证：
+   ```powershell
+   node --version
+   npm --version
+   ```
+
+2. **安装 Claude Code** — 打开终端（PowerShell 或 CMD），执行：
+   ```powershell
+   npm install -g @anthropic-ai/claude-code
+   claude --version
+   ```
+
+3. **克隆并运行**：
+   ```powershell
+   git clone <this-repo-url> my-proposal
+   cd my-proposal
+   claude
+   ```
+   在 Claude Code 提示符中输入 `/write-proposal` 即可启动。
+
+4. **导出 proposal 评审为 .docx** — `generate_review_docx.js` 脚本中的输出路径为硬编码的 Windows 路径。如需修改，编辑脚本中的路径即可。运行：
+   ```powershell
+   npm install
+   node generate_review_docx.js
+   ```
+
+### macOS
+
+1. **安装 Node.js (v18+)** — 推荐通过 [Homebrew](https://brew.sh/) 安装：
+   ```bash
+   brew install node
+   ```
+   或从 [nodejs.org](https://nodejs.org/) 下载 macOS 安装包。验证：
+   ```bash
+   node --version
+   npm --version
+   ```
+
+2. **安装 Claude Code**：
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   claude --version
+   ```
+
+3. **克隆并运行**：
+   ```bash
+   git clone <this-repo-url> my-proposal
+   cd my-proposal
+   claude
+   ```
+   在 Claude Code 提示符中输入 `/write-proposal` 即可启动。
+
+4. **导出 proposal 评审为 .docx** — `generate_review_docx.js` 脚本中的输出路径是 Windows 硬编码路径（`D:\\claude skill to write proposal\\...`）。在 macOS 上运行前，需将脚本最后一行的输出路径改为 macOS 兼容路径，例如：
+   ```js
+   fs.writeFileSync("./Review of PhD Research Proposal.docx", buffer);
+   ```
+   然后运行：
+   ```bash
+   npm install
+   node generate_review_docx.js
+   ```
 
 ---
 
